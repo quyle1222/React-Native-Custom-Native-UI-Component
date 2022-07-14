@@ -8,5 +8,4 @@ type Props = {
 
 const ImageView: HostComponent<Props> =
   requireNativeComponent('RCTImageViewCustom')
-  
 export default ImageView

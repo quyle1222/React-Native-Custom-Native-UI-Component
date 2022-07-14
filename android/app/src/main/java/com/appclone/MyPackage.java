@@ -19,7 +19,7 @@ public class MyPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
                 new ReactImageManager(reactContext),
-                new VideoViewManager()
+                new VideoViewManager(reactContext)
         );
     }
 }
