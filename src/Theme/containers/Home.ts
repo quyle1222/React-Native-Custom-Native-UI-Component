@@ -1,8 +1,13 @@
 import { StyleSheet, Dimensions } from 'react-native'
 import { CommonParams } from '@/Theme/theme'
 
-export default function <C>({ Colors, Gutters, Layout }: CommonParams<C>) {
-  const { width, height } = Dimensions.get('window')
+export default function <C>({
+  Colors,
+  Gutters,
+  Layout,
+  Fonts,
+}: CommonParams<C>) {
+  const { width } = Dimensions.get('screen')
   const base = {
     ...Layout.center,
     ...Gutters.largeHPadding,
@@ -39,6 +44,24 @@ export default function <C>({ Colors, Gutters, Layout }: CommonParams<C>) {
     image: {
       width: width * 0.4,
       height: width * 0.4,
+    },
+    container: {
+      flex: 1,
+      paddingHorizontal: 5,
+      maxHeight: width * 0.4,
+      overflow: 'hidden',
+    },
+    viewItem: {
+      width: width,
+      marginVertical: 5,
+    },
+    video: {
+      width: width,
+      height: 200,
+    },
+    text: {
+      ...Fonts.textSmall,
+      fontWeight: 'bold',
     },
   })
 }
