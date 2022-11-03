@@ -1,26 +1,32 @@
-import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeContainer } from '@/Containers'
-import Icon from 'react-native-vector-icons/FontAwesome'
 import useTheme from '@/Hooks/useTheme'
 import NAVIGATION from '@/Utils/Navigation'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import React from 'react'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 const Tab = createBottomTabNavigator()
 
-// @refresh reset
 const MainNavigator = () => {
   const { NavigationColors } = useTheme()
   return (
     <Tab.Navigator
       initialRouteName={NAVIGATION.HOME}
       screenOptions={({ route }) => ({
+        tabBarShowLabel: false,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName: string = ''
-          if (route.name === NAVIGATION.HOME) {
-            iconName = 'rocket'
+          switch (route.name) {
+            case NAVIGATION.HOME:
+              iconName = 'home'
+              break
+            case NAVIGATION.MAP:
+              iconName = 'map'
+              break
           }
-          return <FontAwesome5 name={'git'} solid size={30} />
+          return (
+            <FontAwesome5 name={iconName} solid size={size} color={color} />
+          )
         },
       })}
     >
@@ -28,8 +34,16 @@ const MainNavigator = () => {
         name={NAVIGATION.HOME}
         component={HomeContainer}
         options={{
+          lazy: true,
           headerShown: false,
-          // tabBarLabelPosition: 'below-icon',
+        }}
+      />
+      <Tab.Screen
+        name={NAVIGATION.MAP}
+        component={HomeContainer}
+        options={{
+          lazy: true,
+          headerShown: false,
         }}
       />
     </Tab.Navigator>

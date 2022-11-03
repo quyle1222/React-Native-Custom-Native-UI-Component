@@ -6,7 +6,6 @@ import { StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
-// import {HomeContainer} from '@/Containers'
 
 const Stack = createStackNavigator()
 

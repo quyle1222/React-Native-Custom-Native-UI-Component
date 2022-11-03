@@ -20,9 +20,6 @@ const HomeContainer: FC<props> = () => {
   const { Container, Layout } = useTheme()
   const { home: style } = Container
   const { t } = useTranslation()
-  const { HelloWorldModule } = NativeModules
-
-  console.log('NativeModules', NativeModules)
   const [fetchListMovies, { data }] = useLazyFetchListMoviesQuery()
   const results = useMemo(() => data?.results ?? [], [data?.results])
 
