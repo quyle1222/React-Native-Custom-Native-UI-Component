@@ -1,5 +1,5 @@
 apply plugin: "com.android.application"
-
+apply plugin: 'kotlin-android'
 import com.android.build.OutputFile
 
 /**
@@ -191,6 +191,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"

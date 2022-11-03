@@ -12,6 +12,7 @@ module.exports = {
     'react/require-default-props': ['error'],
     'react/default-props-match-prop-types': ['error'],
     'react/sort-prop-types': ['error'],
+    'react-hooks/rules-of-hooks': 'never', // Checks rules of Hooks
   },
   settings: {
     'import/resolver': {

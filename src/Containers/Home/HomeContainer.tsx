@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useTheme } from '@/Hooks'
 import { useLazyFetchListMoviesQuery } from '@/Services/modules/movies'
 import { Movie } from '@/Services/modules/movies/fetchListMovies'
@@ -11,22 +9,20 @@ import { Header } from '@/Components'
 import moment from 'moment'
 import FastImage from 'react-native-fast-image'
 import Video from 'react-native-video'
+
 interface props {
   navigation: Object
 }
 
-const HomeContainer: FC<props> = ({ navigation }) => {
+const HomeContainer: FC<props> = () => {
   const [page, setPage] = useState<number>(1)
   const [listMovies, setListMovies] = useState<Array<Movie>>([])
-  const { Container, Layout, Fonts } = useTheme()
+  const { Container, Layout } = useTheme()
   const { home: style } = Container
   const { t } = useTranslation()
   const { HelloWorldModule } = NativeModules
 
-  HelloWorldModule.simpleMethodWithParams('text', (text: String) => {
-    console.log('params', text)
-  })
-
+  console.log('NativeModules', NativeModules)
   const [fetchListMovies, { data }] = useLazyFetchListMoviesQuery()
   const results = useMemo(() => data?.results ?? [], [data?.results])
 
@@ -74,6 +70,7 @@ const HomeContainer: FC<props> = ({ navigation }) => {
     <View style={[style.fill, style.itemCenter]}>
       <Header title={t('home.title')} />
       <Video
+        resizeMode={'stretch'}
         muted={true}
         style={style.video}
         source={{
