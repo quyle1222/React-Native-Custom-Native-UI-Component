@@ -8,7 +8,7 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTLog.h>
 @interface RCT_EXTERN_MODULE(HelloWorldModule, NSObject)
-RCT_EXTERN_METHOD(getName:(RCTResponseSenderBlock*)callBack)
-RCT_EXTERN_METHOD(simpleMethodWithParams: (NSString *)param callback: (RCTResponseSenderBlock*)callback)
+RCT_EXTERN_METHOD(getName: (RCTResponseSenderBlock*)callBack)
+RCT_EXTERN_METHOD(simpleMethodWithParams: (NSString *)param (RCTResponseSenderBlock*) =callback)
 + (BOOL)requiresMainQueueSetup { return YES; }
 @end

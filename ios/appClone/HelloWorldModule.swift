@@ -12,12 +12,12 @@ import AVFoundation
 @objc(HelloWorldModule)
 class HelloWorldModule: NSObject {
   
-  @objc func getName(_ callback: RCTResponseSenderBlock) {
+  @objc func getName(callback: RCTResponseSenderBlock) {
     callback(["SWIFT native Module"])
   }
   
   @objc public func simpleMethodWithParams(
-     _ param: String,
+    param: String,
      callback: RCTResponseSenderBlock
    ) {
      callback(["CustomMethods.simpleMethodWithParams('\(param)')"])
