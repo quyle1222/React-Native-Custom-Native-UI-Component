@@ -14,3 +14,8 @@ RCT_EXTERN_METHOD(getName: (RCTResponseSenderBlock*)callBack)
 RCT_EXTERN_METHOD(simpleMethodWithParams: (NSString *)param (RCTResponseSenderBlock*) =callback)
 + (BOOL)requiresMainQueueSetup { return YES; }
 @end
+
+
+@interface RCT_EXTERN_MODULE(NativeViewManager, RCTViewManager)
+
+@end

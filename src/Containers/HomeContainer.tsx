@@ -5,10 +5,11 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FlatList, Text, View, NativeModules } from 'react-native'
 import { Config } from '@/Config'
-import { Header } from '@/Components'
+import { Header, VideoNative } from '@/Components'
 import moment from 'moment'
 import FastImage from 'react-native-fast-image'
 import Video from 'react-native-video'
+import { FA5Style } from 'react-native-vector-icons/FontAwesome5'
 
 interface props {
   navigation: Object
@@ -66,13 +67,8 @@ const HomeContainer: FC<props> = () => {
   return (
     <View style={[style.fill, style.itemCenter]}>
       <Header title={t('home.title')} />
-      <Video
-        resizeMode={'stretch'}
-        muted={true}
-        style={style.video}
-        source={{
-          uri: 'https://v190.iiiijjjjij.com/xbase/us40/xcfiles/videos/2022/7/14/vietsub_pinyin_co_gai_ay_noi_voi_toi_uu_uu_cover_tik_tok_6931702753407677545.mp4',
-        }}
+      <VideoNative
+        style={{ width: 100, height: 100 }}
       />
       <FlatList
         data={listMovies}

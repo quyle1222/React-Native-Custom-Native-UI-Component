@@ -2,10 +2,9 @@ import { requireNativeComponent, HostComponent, ViewStyle } from 'react-native'
 type Props = {
   url: string
   style: ViewStyle
-  onChange?: Function
+  // onChange?: Function
 }
-
-const VideoView: HostComponent<Props> =
-  requireNativeComponent('VideoViewCustom')
+const VideoView: any =
+  requireNativeComponent('NativeView')
 
 export default VideoView
