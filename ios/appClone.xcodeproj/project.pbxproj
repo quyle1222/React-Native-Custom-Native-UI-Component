@@ -52,6 +52,10 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = appClone/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = appClone/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = appClone/main.m; sourceTree = "<group>"; };
+		2487AC7F2919FF1F005A1047 /* VideoNativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoNativeView.swift; sourceTree = "<group>"; };
+		2487AC81291A0022005A1047 /* VideoNativeViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoNativeViewManager.swift; sourceTree = "<group>"; };
+		2487AC82291A01D4005A1047 /* VideoNativeViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoNativeViewManager.m; sourceTree = "<group>"; };
+		2487AC83291A03E0005A1047 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* appClone-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "appClone-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* appClone-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "appClone-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F9E780CE724C60CB827C553 /* Pods-appClone-appCloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appClone-appCloneTests.debug.xcconfig"; path = "Target Support Files/Pods-appClone-appCloneTests/Pods-appClone-appCloneTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 		13B07FAE1A68108700A75B9A /* appClone */ = {
 			isa = PBXGroup;
 			children = (
+				2487AC83291A03E0005A1047 /* Fonts */,
+				2487AC802919FF2E005A1047 /* Components */,
 				366EE1262916912400AF2CB5 /* HelloWorldModule.swift */,
 				366EE1272916912400AF2CB5 /* RCTBridge.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -130,6 +136,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				366EE1252916912300AF2CB5 /* appClone-Bridging-Header.h */,
+				2487AC82291A01D4005A1047 /* VideoNativeViewManager.m */,
 			);
 			name = appClone;
 			sourceTree = "<group>";
@@ -143,6 +150,15 @@
 				A8A496B83138A0046DC1D49A /* Pods-appClone-appCloneTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		2487AC802919FF2E005A1047 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2487AC81291A0022005A1047 /* VideoNativeViewManager.swift */,
+				2487AC7F2919FF1F005A1047 /* VideoNativeView.swift */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {

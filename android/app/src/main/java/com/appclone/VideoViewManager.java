@@ -20,7 +20,7 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import java.util.Map;
 
 public class VideoViewManager extends SimpleViewManager<VideoView> {
-    public static final String REACT_CLASS = "VideoViewCustom";
+    public static final String REACT_CLASS = "VideoNativeViewManager";
     ReactContext reactContext;
     public final int CHANGE_FUNCTION = 1;
 
