@@ -68,7 +68,13 @@ const HomeContainer: FC<props> = () => {
     <View style={[style.fill, style.itemCenter]}>
       <Header title={t('home.title')} />
       <VideoNative
-        style={{ width: 100, height: 100 }}
+        style={{
+          width: '100%',
+          height: 100,
+          justifyContent: 'center',
+          alignSelf:"center"
+        }}
+        url="React-native call"
       />
       <FlatList
         data={listMovies}

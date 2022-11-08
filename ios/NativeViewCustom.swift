@@ -7,6 +7,11 @@
 
 import UIKit
 class NativeViewCustom: UIView {
+  @objc var url:String?{
+    didSet{
+      numberLabel.text = url
+    }
+  }
   var numberLabel:UILabel!
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -20,9 +25,9 @@ class NativeViewCustom: UIView {
   
   func setupView(){
     numberLabel = UILabel()
-    numberLabel.font = .systemFont(ofSize: 20)
+    numberLabel.font = .systemFont(ofSize: 40)
     numberLabel.translatesAutoresizingMaskIntoConstraints = false
-    numberLabel.textAlignment = .left
+    numberLabel.textAlignment = .center
     numberLabel.text = "Test Native UI Component"
     self.addSubview(numberLabel)
   }
