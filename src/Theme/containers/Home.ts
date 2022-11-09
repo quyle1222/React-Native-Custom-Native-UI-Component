@@ -55,13 +55,15 @@ export default function <C>({
       width: width,
       marginVertical: 5,
     },
-    video: {
-      width: width,
-      height: 200,
-    },
     text: {
       ...Fonts.textSmall,
       fontWeight: 'bold',
+    },
+    video: {
+      width: '100%',
+      height: 200,
+      justifyContent: 'center',
+      alignSelf: 'center',
     },
   })
 }

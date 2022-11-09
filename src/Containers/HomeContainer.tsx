@@ -10,6 +10,7 @@ import moment from 'moment'
 import FastImage from 'react-native-fast-image'
 import Video from 'react-native-video'
 import { FA5Style } from 'react-native-vector-icons/FontAwesome5'
+import { Constant } from '@/Utils/Constant'
 
 interface props {
   navigation: Object
@@ -67,17 +68,7 @@ const HomeContainer: FC<props> = () => {
   return (
     <View style={[style.fill, style.itemCenter]}>
       <Header title={t('home.title')} />
-      <VideoNative
-        style={{
-          width: '100%',
-          height: 200,
-          justifyContent: 'center',
-          alignSelf: 'center',
-        }}
-        url={
-          'https://v190.iiiijjjjij.com/xbase/us40/xcfiles/videos/2022/7/14/vietsub_pinyin_co_gai_ay_noi_voi_toi_uu_uu_cover_tik_tok_6931702753407677545.mp4'
-        }
-      />
+      <VideoNative style={style.video} url={Constant.URL_VIDEO} />
       <FlatList
         data={listMovies}
         extraData={listMovies}

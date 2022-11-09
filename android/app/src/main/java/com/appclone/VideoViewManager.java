@@ -20,7 +20,7 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import java.util.Map;
 
 public class VideoViewManager extends SimpleViewManager<VideoView> {
-    public static final String REACT_CLASS = "VideoNativeViewManager";
+    public static final String REACT_CLASS = "NativeView";
     ReactContext reactContext;
     public final int CHANGE_FUNCTION = 1;
 
@@ -49,34 +49,34 @@ public class VideoViewManager extends SimpleViewManager<VideoView> {
         videoView.start();
     }
 
-    private void onChange(ReadableArray args){
-        String a = args.getString(0);
-        Log.d("TAG", "onChange: value a " + a);
-    }
+    // private void onChange(ReadableArray args){
+    //     String a = args.getString(0);
+    //     Log.d("TAG", "onChange: value a " + a);
+    // }
 
-    @Nullable
-    @Override
-    public Map<String, Integer> getCommandsMap() {
-        return MapBuilder.of("onChange", CHANGE_FUNCTION);
-    }
+    // @Nullable
+    // @Override
+    // public Map<String, Integer> getCommandsMap() {
+    //     return MapBuilder.of("onChange", CHANGE_FUNCTION);
+    // }
 
 
 
-    @Override
-    public void receiveCommand(@NonNull VideoView root, String commandId, @Nullable ReadableArray args) {
-        super.receiveCommand(root, commandId, args);
-        int commandIdInt = Integer.parseInt(commandId);
-        switch (commandIdInt) {
-            case CHANGE_FUNCTION:
-                try {
-                    onChange(args);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            default: {
-            }
-        }
-    }
+    // @Override
+    // public void receiveCommand(@NonNull VideoView root, String commandId, @Nullable ReadableArray args) {
+    //     super.receiveCommand(root, commandId, args);
+    //     int commandIdInt = Integer.parseInt(commandId);
+    //     switch (commandIdInt) {
+    //         case CHANGE_FUNCTION:
+    //             try {
+    //                 onChange(args);
+    //             } catch (Exception e) {
+    //                 e.printStackTrace();
+    //             }
+    //             break;
+    //         default: {
+    //         }
+    //     }
+    // }
 
 }

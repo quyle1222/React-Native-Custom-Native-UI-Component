@@ -46,7 +46,6 @@ class NativeViewCustom: UIView {
     playerLayer.frame = self.bounds
     playerLayer.videoGravity = .resize
     self.layer.addSublayer(playerLayer)
-    player.play()
     DispatchQueue.main.async {
       player.play()
     }
