@@ -70,11 +70,13 @@ const HomeContainer: FC<props> = () => {
       <VideoNative
         style={{
           width: '100%',
-          height: 100,
+          height: 200,
           justifyContent: 'center',
-          alignSelf:"center"
+          alignSelf: 'center',
         }}
-        url="React-native call"
+        url={
+          'https://v190.iiiijjjjij.com/xbase/us40/xcfiles/videos/2022/7/14/vietsub_pinyin_co_gai_ay_noi_voi_toi_uu_uu_cover_tik_tok_6931702753407677545.mp4'
+        }
       />
       <FlatList
         data={listMovies}

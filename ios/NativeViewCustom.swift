@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import AVFoundation
+import React
 class NativeViewCustom: UIView {
+  private var rootFrame:CGRect = CGRect() {
+    didSet{
+      self.setupView()
+    }
+  }
   @objc var url:String?{
     didSet{
-      numberLabel.text = url
+      self.setupView()
     }
   }
   var numberLabel:UILabel!
@@ -23,12 +30,25 @@ class NativeViewCustom: UIView {
     setupView()
   }
   
+  override func reactSetFrame(_ frame: CGRect) {
+    super.reactSetFrame(frame)
+    self.rootFrame = frame
+  }
+    
   func setupView(){
-    numberLabel = UILabel()
-    numberLabel.font = .systemFont(ofSize: 40)
-    numberLabel.translatesAutoresizingMaskIntoConstraints = false
-    numberLabel.textAlignment = .center
-    numberLabel.text = "Test Native UI Component"
-    self.addSubview(numberLabel)
+    guard let url = url, rootFrame != CGRect() else {return}
+    self.frame = rootFrame
+    self.layer.sublayers?.removeAll()
+    let videoURL = URL(string: url)
+    let player = AVPlayer(url: videoURL!)
+    let playerLayer = AVPlayerLayer(player: player)
+    self.layoutIfNeeded()
+    playerLayer.frame = self.bounds
+    playerLayer.videoGravity = .resize
+    self.layer.addSublayer(playerLayer)
+    player.play()
+    DispatchQueue.main.async {
+      player.play()
+    }
   }
 }
