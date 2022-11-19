@@ -16,6 +16,6 @@ RCT_EXTERN_METHOD(simpleMethodWithParams: (NSString *)param (RCTResponseSenderBl
 @end
 
 
-@interface RCT_EXTERN_MODULE(NativeViewManager, RCTViewManager)
+@interface RCT_EXTERN_MODULE(VideoViewCustomManager, RCTViewManager)
 RCT_EXPORT_VIEW_PROPERTY(url, NSString)
 @end

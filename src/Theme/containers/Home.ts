@@ -58,6 +58,7 @@ export default function <C>({
     text: {
       ...Fonts.textSmall,
       fontWeight: 'bold',
+      color: Colors.text,
     },
     video: {
       width: '100%',

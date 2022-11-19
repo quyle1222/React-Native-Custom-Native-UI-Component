@@ -5,6 +5,6 @@ type Props = {
   onChange?: Function
 }
 const VideoView: HostComponent<Props> =
-  requireNativeComponent('NativeView')
+  requireNativeComponent('VideoViewCustom')
 
 export default VideoView

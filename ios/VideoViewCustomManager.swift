@@ -7,8 +7,8 @@
 
 import Foundation
 
-@objc(NativeViewManager)
-class NativeViewManager: RCTViewManager {
+@objc(VideoViewCustomManager)
+class VideoViewCustomManager: RCTViewManager {
   override static func requiresMainQueueSetup() -> Bool {
     return true
   }
