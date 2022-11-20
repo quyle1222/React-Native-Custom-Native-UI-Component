@@ -19,7 +19,7 @@ interface props {
 const HomeContainer: FC<props> = () => {
   const [page, setPage] = useState<number>(1)
   const [listMovies, setListMovies] = useState<Array<Movie>>([])
-  const { Container, Layout } = useTheme()
+  const { Container, Layout, Colors } = useTheme()
   const { home: style } = Container
   const { t } = useTranslation()
   const [fetchListMovies, { data }] = useLazyFetchListMoviesQuery()
@@ -58,7 +58,9 @@ const HomeContainer: FC<props> = () => {
           <View style={style.container}>
             <Text style={style.text}>{title}</Text>
             <Text>{`Release date: ${date}`}</Text>
-            <Text numberOfLines={7}>{overview}</Text>
+            <Text style={{ color: Colors.text }} numberOfLines={7}>
+              {overview}
+            </Text>
           </View>
         </View>
       </View>
