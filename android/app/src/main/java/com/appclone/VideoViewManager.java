@@ -1,6 +1,8 @@
 package com.appclone;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +18,8 @@ public class VideoViewManager extends SimpleViewManager<VideoView> {
     public static final String REACT_CLASS = "VideoViewCustom";
     public final int CHANGE_FUNCTION = 1;
     ReactContext reactContext;
-    private int numberOfCall = 0;
+    private final int numberOfCall = 0;
+    private MediaController mediaController;
 
     public VideoViewManager(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
@@ -32,21 +35,29 @@ public class VideoViewManager extends SimpleViewManager<VideoView> {
     @Override
     protected VideoView createViewInstance(@NonNull ThemedReactContext reactContext) {
         VideoView view = new VideoView(reactContext);
+        this.mediaController = new MediaController(reactContext);
+        mediaController.setMediaPlayer(view);
+        view.setMediaController(mediaController);
         return view;
+    }
+
+    @Override
+    public void onDropViewInstance(@NonNull VideoView view) {
+        super.onDropViewInstance(view);
+        view.stopPlayback();
     }
 
     @ReactProp(name = "url")
     public void setVideoPath(VideoView videoView, String urlPath) {
-        numberOfCall += 1;
-        try {
-            new Thread(() -> {
-                RNLog.w(reactContext, "Number call" + numberOfCall + "url " + urlPath);
-                Uri uri = Uri.parse(urlPath);
-                videoView.setVideoURI(uri);
+        Uri uri = Uri.parse(urlPath);
+        videoView.setVideoURI(uri);
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                RNLog.w(reactContext, "onPrepared");
+                videoView.seekTo(1);
                 videoView.start();
-            }).run();
-        } catch (Exception error) {
-            RNLog.w(reactContext, error.getMessage());
-        }
+            }
+        });
     }
 }
