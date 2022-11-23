@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { polyfill } from 'react-lifecycles-compat'
 import {
@@ -12,7 +12,7 @@ import {
 
 const { height, width } = Dimensions.get('window')
 
-class CardStack extends Component {
+class CardStack extends PureComponent {
   static distance(x, y) {
     return Math.hypot(x, y)
   }
@@ -198,7 +198,6 @@ class CardStack extends Component {
       return true
     }
     if (a.key !== b.key) return false
-
     return true
   }
 
@@ -256,9 +255,7 @@ class CardStack extends Component {
 
   _goBack(direction) {
     const { cards, sindex, topCard } = this.state
-
     if (sindex - 3 < 0 && !this.props.loop) return
-
     const previusCardIndex = this.mod(sindex - 3, cards.length)
     let update = {}
     if (topCard === 'cardA') {
@@ -272,7 +269,6 @@ class CardStack extends Component {
         cardA: cards[previusCardIndex],
       }
     }
-
     this.setState(
       {
         ...update,
@@ -299,13 +295,11 @@ class CardStack extends Component {
             break
           default:
         }
-
         Animated.spring(this.state.dragDistance, {
           toValue: 0,
           duration: this.props.duration,
           useNativeDriver: this.props.useNativeDriver || false,
         }).start()
-
         Animated.spring(this.state.drag, {
           toValue: { x: 0, y: 0 },
           duration: this.props.duration,
@@ -421,17 +415,13 @@ class CardStack extends Component {
     }
   }
 
-  /**
-   * @description CardB’s click feature is trigger the CardA on the card stack. (Solved on Android)
-   * @see https://facebook.github.io/react-native/docs/view#pointerevents
-   */
   _setPointerEvents(topCard, topCardName) {
     return { pointerEvents: topCard === topCardName ? 'auto' : 'none' }
   }
 
   render() {
     const { secondCardZoom, renderNoMoreCards } = this.props
-    const { drag, dragDistance, cardA, cardB, topCard, sindex } = this.state
+    const { drag, dragDistance, cardA, cardB, topCard } = this.state
     const scale = dragDistance.interpolate({
       inputRange: [0, 10, 220],
       outputRange: [secondCardZoom, secondCardZoom, 1],
