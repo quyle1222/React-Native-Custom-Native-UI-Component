@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {
-  View,
-} from 'react-native';
+import { View } from 'react-native'
 
-const Card = ({ style, children }) => (
-  <View style={style} >
-    {children}
-  </View>);
+const Card = ({ style, children }) => <View style={style}>{children}</View>
 
 Card.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  style: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+  style: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   onSwipedLeft: PropTypes.func,
   onSwipedRight: PropTypes.func,
   onSwipedTop: PropTypes.func,
@@ -27,4 +26,4 @@ Card.defaultProps = {
   onSwipedBottom: () => { },
 }
 
-export default Card;
+export default Card

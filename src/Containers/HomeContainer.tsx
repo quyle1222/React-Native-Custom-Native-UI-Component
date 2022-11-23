@@ -1,6 +1,10 @@
+import { Header } from '@/Components'
+import { Config } from '@/Config'
 import { useTheme } from '@/Hooks'
 import { useLazyFetchListMoviesQuery } from '@/Services/modules/movies'
 import { Movie } from '@/Services/modules/movies/fetchListMovies'
+import { Constant } from '@/Utils/Constant'
+import moment from 'moment'
 import React, {
   FC,
   useCallback,
@@ -10,18 +14,14 @@ import React, {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FlatList, Text, View, NativeModules } from 'react-native'
-import { Config } from '@/Config'
-import { Header, VideoNative } from '@/Components'
-import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+import { Dimensions, Text, View } from 'react-native'
 import CardStack, { Card } from 'react-native-card-stack-swiper'
-import { Constant } from '@/Utils/Constant'
+import FastImage from 'react-native-fast-image'
 
 interface props {
   navigation: Object
 }
-
+const { width, height } = Dimensions.get('window')
 const HomeContainer: FC<props> = () => {
   const ref = useRef<CardStack | null>()
   const [page, setPage] = useState<number>(1)
@@ -82,19 +82,35 @@ const HomeContainer: FC<props> = () => {
     )
   }
 
+  const renderCardContent = () => {
+    return <View></View>
+  }
+
   return (
     <View style={[style.fill, style.itemCenter]}>
       <Header title={t('home.title')} />
       <CardStack
-        onSwipedLeft={index => {}}
-        onSwipedRight={index => {}}
+        // onSwipedTop={index => console.log('onSwipedTop', index)}
+        // onSwipeEnd={index => console.log('onSwipeEnd', index)}
+        // onSwipedLeft={index => console.log('onSwipedLeft', index)}
+        // onSwipedRight={index => console.log('onSwipedRight', index)}
         ref={refInstance => (ref.current = refInstance)}
         style={{ width: '100%', height: '100%' }}
         renderNoMoreCards={renderEmptyList}
       >
-        {Constant.LIST_IMAGE.map(item => {
+        {Constant.LIST_IMAGE.map((item, index) => {
           return (
-            <Card style={{ width: 100, height: 100, backgroundColor: 'red' }}>
+            <Card
+              key={index}
+              style={{
+                width: width,
+                height: 600,
+                alignSelf: 'center',
+                backgroundColor: 'red',
+                justifyContent: 'center',
+                alignContent: 'center',
+              }}
+            >
               <FastImage
                 style={{ flex: 1 }}
                 source={{
