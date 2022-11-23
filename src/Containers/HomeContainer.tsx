@@ -1,15 +1,21 @@
 import { useTheme } from '@/Hooks'
 import { useLazyFetchListMoviesQuery } from '@/Services/modules/movies'
 import { Movie } from '@/Services/modules/movies/fetchListMovies'
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 import { FlatList, Text, View, NativeModules } from 'react-native'
 import { Config } from '@/Config'
 import { Header, VideoNative } from '@/Components'
 import moment from 'moment'
 import FastImage from 'react-native-fast-image'
-import Video from 'react-native-video'
-import { FA5Style } from 'react-native-vector-icons/FontAwesome5'
+import CardStack, { Card } from 'react-native-card-stack-swiper'
 import { Constant } from '@/Utils/Constant'
 
 interface props {
@@ -17,6 +23,7 @@ interface props {
 }
 
 const HomeContainer: FC<props> = () => {
+  const ref = useRef<CardStack | null>()
   const [page, setPage] = useState<number>(1)
   const [listMovies, setListMovies] = useState<Array<Movie>>([])
   const { Container, Layout, Colors } = useTheme()
@@ -67,18 +74,39 @@ const HomeContainer: FC<props> = () => {
     )
   }
 
+  const renderEmptyList = () => {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Text style={{ alignSelf: 'center' }}>No more</Text>
+      </View>
+    )
+  }
+
   return (
     <View style={[style.fill, style.itemCenter]}>
       <Header title={t('home.title')} />
-      <VideoNative style={style.video} url={Constant.URL_VIDEO} />
-      <FlatList
-        data={listMovies}
-        extraData={listMovies}
-        keyExtractor={(_, index: number) => index.toString()}
-        renderItem={({ item }: { item: Movie }) => renderItem(item)}
-        onEndReachedThreshold={0.1}
-        onEndReached={onEndReached}
-      />
+      <CardStack
+        onSwipedLeft={index => {}}
+        onSwipedRight={index => {}}
+        ref={refInstance => (ref.current = refInstance)}
+        style={{ width: '100%', height: '100%' }}
+        renderNoMoreCards={renderEmptyList}
+      >
+        {Constant.LIST_IMAGE.map(item => {
+          return (
+            <Card style={{ width: 100, height: 100, backgroundColor: 'red' }}>
+              <FastImage
+                style={{ flex: 1 }}
+                source={{
+                  uri: Config.URL_IMAGE + item,
+                  priority: FastImage.priority.normal,
+                }}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+            </Card>
+          )
+        })}
+      </CardStack>
     </View>
   )
 }

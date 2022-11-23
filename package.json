@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "react-native run-ios --simulator \"iPhone 11 Pro (15.5)\"",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
@@ -23,6 +23,7 @@
     "react": "17.0.2",
     "react-i18next": "^11.16.7",
     "react-native": "0.67.4",
+    "react-native-card-stack-swiper": "file:./package/react-native-card-stack-swiper",
     "react-native-fast-image": "^8.5.11",
     "react-native-flipper": "^0.143.0",
     "react-native-gesture-handler": "^2.4.1",
