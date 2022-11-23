@@ -83,19 +83,10 @@ const HomeContainer: FC<props> = () => {
   }
 
   const renderCardContent = () => {
-    return <View></View>
-  }
-
-  return (
-    <View style={[style.fill, style.itemCenter]}>
-      <Header title={t('home.title')} />
+    return (
       <CardStack
-        // onSwipedTop={index => console.log('onSwipedTop', index)}
-        // onSwipeEnd={index => console.log('onSwipeEnd', index)}
-        // onSwipedLeft={index => console.log('onSwipedLeft', index)}
-        // onSwipedRight={index => console.log('onSwipedRight', index)}
         ref={refInstance => (ref.current = refInstance)}
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: width * 0.9, height: 600, alignSelf: 'center' }}
         renderNoMoreCards={renderEmptyList}
       >
         {Constant.LIST_IMAGE.map((item, index) => {
@@ -103,16 +94,18 @@ const HomeContainer: FC<props> = () => {
             <Card
               key={index}
               style={{
-                width: width,
+                width: width * 0.9,
                 height: 600,
                 alignSelf: 'center',
                 backgroundColor: 'red',
                 justifyContent: 'center',
                 alignContent: 'center',
+                borderRadius: 25,
+                overflow: 'hidden',
               }}
             >
               <FastImage
-                style={{ flex: 1 }}
+                style={{ flex: 1, borderRadius: 25 }}
                 source={{
                   uri: Config.URL_IMAGE + item,
                   priority: FastImage.priority.normal,
@@ -123,6 +116,13 @@ const HomeContainer: FC<props> = () => {
           )
         })}
       </CardStack>
+    )
+  }
+
+  return (
+    <View style={[style.fill, style.itemCenter]}>
+      <Header title={t('home.title')} />
+      {renderCardContent()}
     </View>
   )
 }

@@ -12,7 +12,7 @@ import {
 
 const { height, width } = Dimensions.get('window')
 
-class CardStack extends PureComponent {
+class CardStack extends Component {
   static distance(x, y) {
     return Math.hypot(x, y)
   }
