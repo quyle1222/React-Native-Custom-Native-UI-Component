@@ -8,6 +8,7 @@ import {
   CommonActions,
   createNavigationContainerRef,
 } from '@react-navigation/native'
+import { Screen } from './Application'
 
 type RootStackParamList = {
   Startup: undefined
@@ -34,7 +35,7 @@ export function navigateAndReset(routes = [], index = 0) {
   }
 }
 
-export function navigateAndSimpleReset(name: string, index = 0) {
+export function navigateAndSimpleReset(name: Screen, index = 0) {
   if (navigationRef.isReady()) {
     navigationRef.dispatch(
       CommonActions.reset({

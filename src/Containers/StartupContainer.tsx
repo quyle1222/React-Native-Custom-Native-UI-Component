@@ -6,24 +6,21 @@ import { Brand } from '@/Components'
 import { setDefaultTheme } from '@/Store/Theme'
 import { navigateAndSimpleReset } from '@/Navigators/utils'
 import { FC } from 'react'
+import { Screen } from '@/Navigators/Application'
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
 
 const StartupContainer: FC = () => {
   const { Layout, Gutters, Fonts } = useTheme()
 
   const { t } = useTranslation()
 
-  const init = async () => {
-    await new Promise(resolve =>
-      setTimeout(() => {
-        resolve(true)
-      }, 2000),
-    )
-    setDefaultTheme({ theme: 'default', darkMode: null })
-    navigateAndSimpleReset('Main')
-  }
-
   useEffect(() => {
-    init()
+    setDefaultTheme({ theme: 'default', darkMode: null })
+    async function getIsSingedIn() {
+      const isSingedIn = await GoogleSignin.isSignedIn()
+      navigateAndSimpleReset(isSingedIn ? Screen.MAIN : Screen.AUTH)
+    }
+    getIsSingedIn()
   })
 
   return (

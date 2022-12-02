@@ -12,19 +12,6 @@ const Tab = createBottomTabNavigator()
 
 const MainNavigator = () => {
   const navigation = useNavigation()
-  useEffect(() => {
-    async function getIsSingedIn() {
-      const isSingedIn = await GoogleSignin.isSignedIn()
-      if (!isSingedIn) {
-        navigation.dispatch(
-          CommonActions.navigate({
-            name: Screen.AUTH,
-          }),
-        )
-      }
-    }
-    getIsSingedIn()
-  }, [])
 
   const { NavigationColors } = useTheme()
   return (

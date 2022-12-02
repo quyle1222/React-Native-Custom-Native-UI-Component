@@ -2,19 +2,19 @@ import React from 'react'
 import { SafeAreaView, StatusBar } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { StartupContainer } from '@/Containers'
+import { AuthContainer, StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
 const Stack = createStackNavigator()
-GoogleSignin.configure();
+GoogleSignin.configure()
 // @refresh reset
 
 export enum Screen {
-  AUTH = "AUTH",
-  MAIN = "MAIN",
-  START_UP = "START_UP"
+  AUTH = 'AUTH',
+  MAIN = 'MAIN',
+  START_UP = 'START_UP',
 }
 const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
@@ -35,9 +35,9 @@ const ApplicationNavigator = () => {
           />
           <Stack.Screen
             name={Screen.AUTH}
-            component={MainNavigator}
+            component={AuthContainer}
             options={{
-              animationEnabled: false,
+              animationEnabled: true,
             }}
           />
         </Stack.Navigator>
