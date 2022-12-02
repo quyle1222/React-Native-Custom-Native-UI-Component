@@ -86,26 +86,14 @@ const HomeContainer: FC<props> = () => {
     return (
       <CardStack
         ref={refInstance => (ref.current = refInstance)}
-        style={{ width: width * 0.9, height: 600, alignSelf: 'center' }}
+        style={style.cardStack}
         renderNoMoreCards={renderEmptyList}
       >
         {Constant.LIST_IMAGE.map((item, index) => {
           return (
-            <Card
-              key={index}
-              style={{
-                width: width * 0.9,
-                height: 600,
-                alignSelf: 'center',
-                backgroundColor: 'red',
-                justifyContent: 'center',
-                alignContent: 'center',
-                borderRadius: 25,
-                overflow: 'hidden',
-              }}
-            >
+            <Card key={index} style={style.card}>
               <FastImage
-                style={{ flex: 1, borderRadius: 25 }}
+                style={style.cardImage}
                 source={{
                   uri: Config.URL_IMAGE + item,
                   priority: FastImage.priority.normal,

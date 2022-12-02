@@ -66,5 +66,24 @@ export default function <C>({
       justifyContent: 'center',
       alignSelf: 'center',
     },
+    cardStack: {
+      width: width * 0.9,
+      height: 600,
+      alignSelf: 'center'
+    },
+    card: {
+      width: width * 0.9,
+      height: 600,
+      alignSelf: 'center',
+      backgroundColor: 'red',
+      justifyContent: 'center',
+      alignContent: 'center',
+      borderRadius: 25,
+      overflow: 'hidden',
+    },
+    cardImage: {
+      flex: 1,
+      borderRadius: 25
+    }
   })
 }

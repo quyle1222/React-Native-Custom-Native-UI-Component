@@ -6,10 +6,16 @@ import { StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
-
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 const Stack = createStackNavigator()
-
+GoogleSignin.configure();
 // @refresh reset
+
+export enum Screen {
+  AUTH = "AUTH",
+  MAIN = "MAIN",
+  START_UP = "START_UP"
+}
 const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
   const { colors } = NavigationTheme
@@ -19,9 +25,16 @@ const ApplicationNavigator = () => {
       <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
         <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Startup" component={StartupContainer} />
+          <Stack.Screen name={Screen.START_UP} component={StartupContainer} />
           <Stack.Screen
-            name="Main"
+            name={Screen.MAIN}
+            component={MainNavigator}
+            options={{
+              animationEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Screen.AUTH}
             component={MainNavigator}
             options={{
               animationEnabled: false,
