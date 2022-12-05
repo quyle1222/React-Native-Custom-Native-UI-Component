@@ -6,7 +6,8 @@ import { AuthContainer, StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
-import { GoogleSignin as GoogleSignIn} from '@react-native-google-signin/google-signin'
+import { GoogleSignin as GoogleSignIn } from '@react-native-google-signin/google-signin'
+import firestore from '@react-native-firebase/firestore'
 const Stack = createStackNavigator()
 // @refresh reset
 
@@ -21,6 +22,7 @@ const ApplicationNavigator = () => {
 
   useEffect(() => {
     GoogleSignIn.configure()
+    firestore().collection('Users')
   }, [])
 
   return (
