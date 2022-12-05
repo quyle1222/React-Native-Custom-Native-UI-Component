@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SafeAreaView, StatusBar } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
@@ -6,9 +6,8 @@ import { AuthContainer, StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
-import { GoogleSignin } from '@react-native-google-signin/google-signin'
+import { GoogleSignin as GoogleSignIn} from '@react-native-google-signin/google-signin'
 const Stack = createStackNavigator()
-GoogleSignin.configure()
 // @refresh reset
 
 export enum Screen {
@@ -19,6 +18,10 @@ export enum Screen {
 const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
   const { colors } = NavigationTheme
+
+  useEffect(() => {
+    GoogleSignIn.configure()
+  }, [])
 
   return (
     <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
