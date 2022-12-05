@@ -1,7 +1,9 @@
 const Colors = {
+  baseColor: 'white',
   primary: 'lightblue',
   text: 'white',
   inputBackground: 'gray',
+  white: 'black',
 }
 
 const NavigationColors = {
