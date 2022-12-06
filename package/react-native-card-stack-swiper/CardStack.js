@@ -66,8 +66,6 @@ class CardStack extends Component {
       onPanResponderMove: (evt, gestureState) => {
         const movedX = gestureState.moveX - gestureState.x0
         const movedY = gestureState.moveY - gestureState.y0
-        console.log('movedX', movedX)
-        console.log('movedY', movedY)
 
         this.props.onSwipe(movedX, movedY)
         const { verticalSwipe, horizontalSwipe } = this.props

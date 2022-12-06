@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+type CallbackWithResult<T> = (error?: Error | null, result?: T | null) => void
+
 export enum KEY {
   FIRE_BASE_TOKEN = 'FIRE_BASE_TOKEN',
 }
-
-type CallbackWithResult<T> = (error?: Error | null, result?: T | null) => void
 
 export const setValue = async (
   key: KEY,
