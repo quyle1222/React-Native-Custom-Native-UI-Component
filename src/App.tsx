@@ -5,7 +5,9 @@ import { PersistGate } from 'redux-persist/lib/integration/react'
 import { store, persistor } from '@/Store'
 import ApplicationNavigator from '@/Navigators/Application'
 import './Translations'
+import { configureFirebase } from './Utils/FireStoreHepler'
 
+configureFirebase()
 const App = () => (
   <Provider store={store}>
     {/**

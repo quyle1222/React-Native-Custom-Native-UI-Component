@@ -15,8 +15,7 @@ export enum CollectionField {
 export const findUserById = async (id: string | undefined) => {
   return await fireStore()
     .collection(Collection.USER)
-    .where(CollectionField.ID, '==', id)
-    .limit(1)
+    .where(CollectionField.EMAIL, '==', id)
     .get()
 }
 

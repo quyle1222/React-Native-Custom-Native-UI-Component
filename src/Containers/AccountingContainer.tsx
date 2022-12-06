@@ -1,13 +1,13 @@
-import React, { FC, useEffect, useState } from 'react'
-import { View, Text } from 'react-native'
+import { findUserById } from '@/Utils/FireStoreHepler'
+import firestore from '@react-native-firebase/firestore'
 import {
   GoogleSignin as GoogleSignIn,
-  User,
+  User
 } from '@react-native-google-signin/google-signin'
-import firestore from '@react-native-firebase/firestore'
 import { use } from 'i18next'
 import { is } from 'immer/dist/internal'
-import { findUserById } from '@/Utils/FireStoreHepler'
+import React, { FC, useEffect, useState } from 'react'
+import { Text, View } from 'react-native'
 
 const AccountingContainer: FC = () => {
   const [user, setUser] = useState<User | null>()
@@ -23,9 +23,15 @@ const AccountingContainer: FC = () => {
   }, [user])
 
   const getCurrentUser = async () => {
-    GoogleSignIn.signInSilently().then(response => {
-      setUser(response)
-    })
+    GoogleSignIn.signInSilently()
+      .then(response => {
+        setUser(response)
+      })
+      .catch(error => {
+        console.log('====================================')
+        console.log('error', error)
+        console.log('====================================')
+      })
   }
 
   const getCollection = async () => {

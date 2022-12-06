@@ -1,13 +1,16 @@
 import { useTheme } from '@/Hooks'
+import { findUserById } from '@/Utils/FireStoreHepler'
 import {
   GoogleSigninButton as GoogleSignInButton,
   GoogleSignin as GoogleSignIn,
+  User,
 } from '@react-native-google-signin/google-signin'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { View } from 'react-native'
 
 const AuthContainer: FC = () => {
   const { Container } = useTheme()
+  const [user, setUser] = useState<User | null>()
   const style = useMemo(() => Container.auth, [])
 
   const handlePlayServices = async () => {
@@ -15,25 +18,26 @@ const AuthContainer: FC = () => {
       .then(() => {
         handleSignIn()
       })
-      .catch(error => {
-        console.log('====================================')
-        console.log('playService Error', error)
-        console.log('====================================')
-      })
+      .catch(error => {})
   }
 
   const handleSignIn = () => {
     GoogleSignIn.signIn()
-      .then(response => {
-        console.log('====================================')
+      .then(() => getCurrentUser())
+      .catch(error => {})
+  }
+  const getCurrentUser = async () => {
+    const currentUser: User | null = await GoogleSignIn.getCurrentUser()
+    if (currentUser) {
+      const { user } = currentUser
+      const { id, email } = user
+      console.log('email', email)
+      findUserById(email).then(response => {
         console.log('response', response)
-        console.log('====================================')
+
+        console.log('response.docs.length', response.docs.length)
       })
-      .catch(error => {
-        console.log('====================================')
-        console.log('sign error', error)
-        console.log('====================================')
-      })
+    }
   }
 
   return (
