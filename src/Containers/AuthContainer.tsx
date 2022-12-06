@@ -1,5 +1,5 @@
 import { useTheme } from '@/Hooks'
-import { findUserById } from '@/Utils/FireStoreHepler'
+import { findUserById } from '@/Utils/FireStoreHelper'
 import {
   GoogleSigninButton as GoogleSignInButton,
   GoogleSignin as GoogleSignIn,
@@ -26,6 +26,7 @@ const AuthContainer: FC = () => {
       .then(() => getCurrentUser())
       .catch(error => {})
   }
+
   const getCurrentUser = async () => {
     const currentUser: User | null = await GoogleSignIn.getCurrentUser()
     if (currentUser) {
@@ -34,7 +35,6 @@ const AuthContainer: FC = () => {
       console.log('email', email)
       findUserById(email).then(response => {
         console.log('response', response)
-
         console.log('response.docs.length', response.docs.length)
       })
     }

@@ -1,4 +1,4 @@
-import { findUserById } from '@/Utils/FireStoreHepler'
+import { findUserById } from '@/Utils/FireStoreHelper'
 import firestore from '@react-native-firebase/firestore'
 import {
   GoogleSignin as GoogleSignIn,
