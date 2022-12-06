@@ -6,8 +6,7 @@ import { AuthContainer, StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
-import { GoogleSignin as GoogleSignIn } from '@react-native-google-signin/google-signin'
-import firestore from '@react-native-firebase/firestore'
+
 const Stack = createStackNavigator()
 // @refresh reset
 
@@ -19,11 +18,6 @@ export enum Screen {
 const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
   const { colors } = NavigationTheme
-
-  useEffect(() => {
-    GoogleSignIn.configure()
-    firestore().collection('Users')
-  }, [])
 
   return (
     <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
