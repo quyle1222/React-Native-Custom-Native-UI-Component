@@ -17,7 +17,7 @@ const StartupContainer: FC = () => {
   useEffect(() => {
     setDefaultTheme({ theme: 'default', darkMode: null })
     async function getIsSingedIn() {
-      GoogleSignin.signOut()
+      // GoogleSignin.signOut()
       const isSingedIn = await GoogleSignin.isSignedIn()
       navigateAndSimpleReset(isSingedIn ? Screen.MAIN : Screen.AUTH)
     }
