@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "510379203158",
+    "project_id": "moviesapp-b90a6",
+    "storage_bucket": "moviesapp-b90a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510379203158:android:eb6d095b0ac661f7f1b9f7",
+        "android_client_info": {
+          "package_name": "com.appclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510379203158-h0mnb4se7cfs8tsvfqubcp3gte5cs62c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACNmS5hAI5YSU6f38U7eUiH9z3IDXfqnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510379203158-h0mnb4se7cfs8tsvfqubcp3gte5cs62c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "510379203158-ho938bkqks9a0043oo6rfu1r1gjk8iu5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tupt.movies"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

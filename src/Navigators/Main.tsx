@@ -1,4 +1,4 @@
-import { HomeContainer } from '@/Containers'
+import { AccountingContainer, HomeContainer } from '@/Containers'
 import useTheme from '@/Hooks/useTheme'
 import NAVIGATION from '@/Utils/Navigation'
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
@@ -12,8 +12,8 @@ const Tab = createBottomTabNavigator()
 
 const MainNavigator = () => {
   const navigation = useNavigation()
-
   const { NavigationColors } = useTheme()
+
   return (
     <Tab.Navigator
       initialRouteName={NAVIGATION.HOME}
@@ -45,7 +45,7 @@ const MainNavigator = () => {
       />
       <Tab.Screen
         name={NAVIGATION.MAP}
-        component={HomeContainer}
+        component={AccountingContainer}
         options={{
           lazy: true,
           headerShown: false,

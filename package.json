@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios --simulator \"iPhone 14 Pro Max (16.1)\"",
+    "ios": "react-native run-ios --simulator \"iPhone 11 Pro (16.1)\"",
     "ios-device": "react-native run-ios --device",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "pod": "cd ios && pod install && cd .."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.3",
+    "@react-native-firebase/app": "^16.4.6",
+    "@react-native-firebase/firestore": "^16.4.6",
     "@react-native-google-signin/google-signin": "^9.0.0",
     "@react-native-masked-view/masked-view": "^0.2.6",
     "@react-navigation/bottom-tabs": "^6.3.1",

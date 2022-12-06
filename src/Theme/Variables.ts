@@ -10,6 +10,7 @@
  */
 export const Colors = {
   // Example colors:
+  baseColor: 'white',
   transparent: 'rgba(0,0,0,0)',
   inputBackground: '#FFFFFF',
   white: '#ffffff',

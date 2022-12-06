@@ -47,6 +47,7 @@ export default function <C>({
     },
     container: {
       flex: 1,
+      backgroundColor: Colors.baseColor,
       paddingHorizontal: 5,
       maxHeight: width * 0.4,
       overflow: 'hidden',
@@ -69,7 +70,7 @@ export default function <C>({
     cardStack: {
       width: width * 0.9,
       height: 600,
-      alignSelf: 'center'
+      alignSelf: 'center',
     },
     card: {
       width: width * 0.9,
@@ -83,7 +84,7 @@ export default function <C>({
     },
     cardImage: {
       flex: 1,
-      borderRadius: 25
-    }
+      borderRadius: 25,
+    },
   })
 }
