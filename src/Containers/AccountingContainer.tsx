@@ -2,7 +2,7 @@ import { findUserById } from '@/Utils/FireStoreHelper'
 import firestore from '@react-native-firebase/firestore'
 import {
   GoogleSignin as GoogleSignIn,
-  User
+  User,
 } from '@react-native-google-signin/google-signin'
 import { use } from 'i18next'
 import { is } from 'immer/dist/internal'
@@ -25,6 +25,8 @@ const AccountingContainer: FC = () => {
   const getCurrentUser = async () => {
     GoogleSignIn.signInSilently()
       .then(response => {
+        console.log('response', response)
+
         setUser(response)
       })
       .catch(error => {

@@ -1,9 +1,10 @@
 import { useTheme } from '@/Hooks'
-import { findUserById } from '@/Utils/FireStoreHelper'
+import { User } from '@/Models/User'
+import { findUserById, saveUser } from '@/Utils/FireStoreHelper'
 import {
   GoogleSigninButton as GoogleSignInButton,
   GoogleSignin as GoogleSignIn,
-  User,
+  User as UserFirebase,
 } from '@react-native-google-signin/google-signin'
 import React, { FC, useMemo, useState } from 'react'
 import { View } from 'react-native'
@@ -28,14 +29,15 @@ const AuthContainer: FC = () => {
   }
 
   const getCurrentUser = async () => {
-    const currentUser: User | null = await GoogleSignIn.getCurrentUser()
+    const currentUser: UserFirebase | null = await GoogleSignIn.getCurrentUser()
     if (currentUser) {
-      const { user } = currentUser
-      const { id, email } = user
-      console.log('email', email)
-      findUserById(email).then(response => {
-        console.log('response', response)
-        console.log('response.docs.length', response.docs.length)
+      const { user }: { user: User } = currentUser
+      const { id } = user
+      setUser(user)
+      findUserById(id).then(response => {
+        if (response.docs.length == 0) {
+          saveUser(user)
+        }
       })
     }
   }

@@ -1,5 +1,6 @@
 import { GoogleSignin as GoogleSignIn } from '@react-native-google-signin/google-signin'
 import fireStore from '@react-native-firebase/firestore'
+import { User } from '@/Models/User'
 
 export enum Collection {
   USERS = 'Users',
@@ -15,8 +16,12 @@ export enum CollectionUsersField {
 export const findUserById = async (id: string | undefined) => {
   return await fireStore()
     .collection(Collection.USERS)
-    .where(CollectionUsersField.EMAIL, '==', id)
+    .where(CollectionUsersField.ID, '==', id)
     .get()
+}
+
+export const saveUser = async (user: User) => {
+  fireStore().collection(Collection.USERS).add(user)
 }
 
 export const configureFirebase = () => {
