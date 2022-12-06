@@ -14,6 +14,9 @@ export enum Screen {
   AUTH = 'AUTH',
   MAIN = 'MAIN',
   START_UP = 'START_UP',
+  CHAT = 'CHAT',
+  MAP = 'MAP',
+  HOME = 'HOME',
 }
 const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
