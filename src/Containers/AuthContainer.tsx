@@ -1,5 +1,7 @@
 import { useTheme } from '@/Hooks'
 import { User } from '@/Models/User'
+import { Screen } from '@/Navigators/Application'
+import { navigateAndSimpleReset } from '@/Navigators/utils'
 import { findUserById, saveUser } from '@/Utils/FireStoreHelper'
 import {
   GoogleSigninButton as GoogleSignInButton,
@@ -24,7 +26,10 @@ const AuthContainer: FC = () => {
 
   const handleSignIn = () => {
     GoogleSignIn.signIn()
-      .then(() => getCurrentUser())
+      .then(async () => {
+        await getCurrentUser()
+        navigateAndSimpleReset(Screen.MAIN)
+      })
       .catch(error => {})
   }
 
