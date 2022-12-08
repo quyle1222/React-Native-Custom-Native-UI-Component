@@ -20,6 +20,12 @@ export const findUserById = async (id: string | undefined) => {
     .get()
 }
 
+export const getListUsers = async () => {
+  return await fireStore()
+    .collection(Collection.USERS)
+    .get()
+}
+
 export const saveUser = async (user: User) => {
   fireStore().collection(Collection.USERS).add(user)
 }

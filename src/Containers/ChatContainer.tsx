@@ -1,34 +1,34 @@
+import { useChat, useProfile, useTheme } from '@/Hooks'
+import { MessageType } from '@/Models/Message'
+import { setMessageStore } from '@/Store/Chat'
+import { RootState } from '@reduxjs/toolkit/dist/query/core/apiState'
 import React, { FC, useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { GiftedChat, IMessage } from 'react-native-gifted-chat'
-import InputChat from './Chat/InputChat'
+import { GiftedChat } from 'react-native-gifted-chat'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 const ChatContainer: FC = () => {
-  const [messages, setMessages] = useState<Array<IMessage>>([])
+  const { Colors } = useTheme()
+  const [messages, setMessages] = useState<Array<MessageType>>([])
+  const dispatch = useDispatch()
+  const { user } = useProfile()
+  const messageStore = useSelector((state: any) => state.chat.listMessage)
+  const handleSendMessage = (messages: MessageType[]) => {
+    dispatch(setMessageStore(JSON.parse(JSON.stringify(messages))))
+  }
 
-  useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: 'Hello developer',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
-        },
-      },
-    ])
-  }, [])
+  const {} = useChat()
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{ flex: 1, backgroundColor: Colors.white }}>
       <GiftedChat
-        messages={messages}
+        messages={messageStore}
         user={{
           _id: 1,
         }}
-        // renderInputToolbar={InputChat}
+        alwaysShowSend
+        onSend={handleSendMessage}
       />
     </View>
   )

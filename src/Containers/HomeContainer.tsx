@@ -1,6 +1,6 @@
 import { Header } from '@/Components'
 import { Config } from '@/Config'
-import { useTheme } from '@/Hooks'
+import { useProfile, useTheme } from '@/Hooks'
 import { useLazyFetchListMoviesQuery } from '@/Services/modules/movies'
 import { Movie } from '@/Services/modules/movies/fetchListMovies'
 import { Constant } from '@/Utils/Constant'
@@ -31,7 +31,6 @@ const HomeContainer: FC<props> = () => {
   const { t } = useTranslation()
   const [fetchListMovies, { data }] = useLazyFetchListMoviesQuery()
   const results = useMemo(() => data?.results ?? [], [data?.results])
-
   useEffect(() => {
     page === 1
       ? setListMovies(results)

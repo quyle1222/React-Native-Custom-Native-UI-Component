@@ -14,8 +14,10 @@ import {
 
 import { api } from '@/Services/api'
 import theme from './Theme'
+import chat from './Chat'
 
 const reducers = combineReducers({
+  chat,
   theme,
   api: api.reducer,
 })

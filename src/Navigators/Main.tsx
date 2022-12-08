@@ -1,4 +1,9 @@
-import { AccountingContainer, ChatContainer, HomeContainer } from '@/Containers'
+import {
+  AccountingContainer,
+  ChatContainer,
+  HomeContainer,
+  ListUserContainer,
+} from '@/Containers'
 import useTheme from '@/Hooks/useTheme'
 import NAVIGATION from '@/Utils/Navigation'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -55,7 +60,7 @@ const MainNavigator = () => {
       />
       <Tab.Screen
         name={Screen.CHAT}
-        component={ChatContainer}
+        component={ListUserContainer}
         options={{
           lazy: true,
           headerShown: false,
